@@ -1,0 +1,28 @@
+name: Playwright Currents
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  playwright:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright with Currents
+        run: CURRENTS_API_URL=https://cy-staging.currents.dev/ CURRENTS_PROJECT_ID=HPitKM CURRENTS_RECORD_KEY=AcceNBS8GCEFdr4C npx playwright test
