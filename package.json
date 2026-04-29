@@ -12,6 +12,7 @@
     "lint": "eslint 'src/**/*.{js,jsx}'",
     "test": "npm run test:unit",
     "test:unit": "react-scripts test --watchAll=false",
+    "test:playwright": "playwright test",
     "test:e2e": "start-server-and-test start http://localhost:9300 cypress",
     "cypress": "cypress run"
   },
@@ -30,6 +31,8 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
     "@babel/runtime": "^7.17.9",
+    "@currents/playwright": "^1.23.2",
+    "@playwright/test": "^1.59.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "cypress": "^9.5.4",
